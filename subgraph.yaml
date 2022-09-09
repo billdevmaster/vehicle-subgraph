@@ -1,0 +1,35 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: VehicleStore
+    network: rinkeby
+    source:
+      address: "0xCE6ADCf4045A7E9fb519961324f7F662E6435568"
+      abi: VehicleStore
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AddVehicle
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - SetServiceWorkder
+      abis:
+        - name: VehicleStore
+          file: ./abis/VehicleStore.json
+      eventHandlers:
+        - event: AddVehicle(uint256,address,string,string,string,string,string)
+          handler: handleAddVehicle
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: SetServiceWorkder(address)
+          handler: handleSetServiceWorkder
+      file: ./src/vehicle-store.ts
