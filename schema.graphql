@@ -1,6 +1,9 @@
-type ExampleEntity @entity {
+type Vehicle @entity {
   id: ID!
-  count: BigInt!
-  index: BigInt! # uint256
+  VIN: String!
   owner: Bytes! # address
+  name: String!
+  make: String!
+  model: String!
+  color: String!
 }

@@ -14,9 +14,6 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - AddVehicle
-        - RoleAdminChanged
-        - RoleGranted
-        - RoleRevoked
         - SetServiceWorkder
       abis:
         - name: VehicleStore
@@ -24,12 +21,6 @@ dataSources:
       eventHandlers:
         - event: AddVehicle(uint256,address,string,string,string,string,string)
           handler: handleAddVehicle
-        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
-          handler: handleRoleAdminChanged
-        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleGranted
-        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleRevoked
         - event: SetServiceWorkder(address)
           handler: handleSetServiceWorkder
       file: ./src/vehicle-store.ts
